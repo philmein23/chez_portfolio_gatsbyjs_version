@@ -24,11 +24,10 @@ const footer = {
   boxShadow: '0 -1px 4px rgba(0,0,0, 0.18)'
 };
 
-css.global('*', { margin: 0, 'fontFamily': 'Roboto Condensed'})
+css.global('*', { margin: 0, fontFamily: 'Roboto Condensed' });
 
 class Layout extends Component {
-
-  componentWillMount() {
+  componentDidMount() {
     const { site: { siteMetadata } } = this.props.data;
 
     document.title = siteMetadata.title;
@@ -37,10 +36,10 @@ class Layout extends Component {
   render() {
     const mobileBelow578px = css({
       '@media(max-width: 575px)': {
-          flexDirection: 'column',
-          height: '80px'
+        flexDirection: 'column',
+        height: '80px'
       }
-    })
+    });
 
     const { data: { site: { siteMetadata } }, location } = this.props;
     return (
@@ -60,7 +59,10 @@ class Layout extends Component {
             rel="stylesheet"
           />
         </head>
-        <Header currentPath={location.pathname} flexDirection={mobileBelow578px} />
+        <Header
+          currentPath={location.pathname}
+          flexDirection={mobileBelow578px}
+        />
 
         <main css={main}>{this.props.children()}</main>
 
@@ -73,11 +75,11 @@ class Layout extends Component {
 export default Layout;
 
 export const query = graphql`
-query LayoutQuery {
-  site {
-    siteMetadata {
-      title
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+      }
     }
   }
-}
 `;

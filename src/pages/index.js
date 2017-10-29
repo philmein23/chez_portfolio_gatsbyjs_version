@@ -33,18 +33,19 @@ export default class Index extends Component {
     }
   }
 
-  componentWillMount() {
-    const { site: { siteMetadata } } = this.props.data;
-    document.title = siteMetadata.title;
-
-    this.setMediaUpdate();
-  }
-
   componentWillUnmount() {
       this.mediaQueryList.removeListener(this.updateWidth)
   }
 
   componentDidMount() {
+    const { site: { siteMetadata } } = this.props.data;
+
+    document.title = siteMetadata.title;
+
+    this.setMediaUpdate();
+    
+    
+
     this.mediaQueryList.matches ? this.setState({width: 200}) : this.setState({width: 300})
   }
   
