@@ -28,13 +28,16 @@ class Images extends Component {
       margin: '2px'
     });
 
-    const { imageData: { allImageField: { edges }} , width } = this.props;
+    const {
+      imageData: { allImageField: { edges } },
+      width
+    } = this.props;
 
     const linkHover = css({
       ':hover': {
         opacity: '0.6'
       }
-    })
+    });
 
     return (
       <div>
@@ -46,11 +49,13 @@ class Images extends Component {
         />
         {edges.map(({ node }, index) => (
           <a
-            {...imageLink} {...linkHover}
+            {...imageLink}
+            {...linkHover}
             key={node.id}
-            onClick={() => this.handleModalDisplay( node.id )}
+            onClick={() => this.handleModalDisplay(node.id)}
           >
             <Image
+              alt={'test'}
               cloudName={CLOUDINARY().CLOUDNAME}
               publicId={node.id}
               width={width}

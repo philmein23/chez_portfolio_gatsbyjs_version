@@ -4,6 +4,8 @@ import Link from 'gatsby-link';
 import { css } from 'glamor';
 import Header from '../components/Header';
 
+import Headroom from 'react-headroom';
+
 const layout = {
   width: '100%',
   margin: 0,
@@ -59,10 +61,16 @@ class Layout extends Component {
             rel="stylesheet"
           />
         </head>
-        <Header
-          currentPath={location.pathname}
-          flexDirection={mobileBelow578px}
-        />
+
+        <Headroom
+            style={{transition: 'all .5s ease-in-out'}}>
+            
+            <Header
+            currentPath={location.pathname}
+            flexDirection={mobileBelow578px}
+          />
+        </Headroom>
+
 
         <main css={main}>{this.props.children()}</main>
 

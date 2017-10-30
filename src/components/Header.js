@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ActiveLink from './ActiveLink';
+import Link from 'gatsby-link';
 
 import { css } from 'glamor';
 
@@ -10,8 +11,14 @@ const mainTitle = {
   paddingLeft: 10,
   fontWeight: '800',
   cursor: 'pointer',
-  color: 'rgb(0, 0, 0)'
+  color: 'rgb(0, 0, 0)',
+  textDecoration: 'none'
 };
+
+const mainTitleLink = css({
+  textDecoration: 'none',
+  color: 'black'
+})
 
 const header = css({
   display: 'flex',
@@ -21,33 +28,43 @@ const header = css({
   backgroundColor: '#FFF',
   boxShadow: '0 2px 4px rgba(0, 0, 0, 0.18)',
   borderTop: '5px solid black',
-  position: 'fixed',
   zIndex: '1000'
-})
+});
 
 const linkLastChild = () => {
   return css({
     paddingRight: '15px'
-  })
-}
+  });
+};
 
 export default class Header extends Component {
-
   render() {
     const { flexDirection, currentPath } = this.props;
 
     const headerBar = css({
       display: 'flex',
       height: 50
-    })
+    });
 
     return (
-      <header {...header} {...flexDirection }>
-        <div css={mainTitle}>illa Art Workz Studios</div>
-        <nav {...headerBar} >
-          <ActiveLink currentPath={currentPath} path={'/'}>Portfolio</ActiveLink>
-          <ActiveLink currentPath={currentPath} path={'/contact'}>Contact</ActiveLink>
-          <ActiveLink currentPath={currentPath} lastChild={linkLastChild()} path={'/about'}>About</ActiveLink>
+      <header {...header} {...flexDirection}>
+        <div css={mainTitle}>
+          <Link className={mainTitleLink} to={'/'}>illa Art Workz Studios</Link>
+        </div>
+        <nav {...headerBar}>
+          <ActiveLink currentPath={currentPath} path={'/'}>
+            Portfolio
+          </ActiveLink>
+          <ActiveLink currentPath={currentPath} path={'/contact'}>
+            Contact
+          </ActiveLink>
+          <ActiveLink
+            currentPath={currentPath}
+            lastChild={linkLastChild()}
+            path={'/about'}
+          >
+            About
+          </ActiveLink>
         </nav>
       </header>
     );

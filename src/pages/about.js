@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Image } from 'cloudinary-react';
 import { css } from 'glamor';
 import Img from 'gatsby-image';
 
@@ -42,11 +43,12 @@ const AboutContainer = ({
     color: '#222'
   });
 
-  const artistPictureContainer = {
+  const artistPictureContainer = css({
     display: 'flex',
     width: '100%',
-    flexDirection: 'column'
-  }
+    flexDirection: 'column',
+    alignItems: 'center'
+  })
 
   return (
     <div {...aboutContainer}>
@@ -87,17 +89,17 @@ const AboutContainer = ({
 export default class About extends Component {
   render() {
     const { data } = this.props;
-
     const mobileBelow578px = css({
       '@media(max-width: 575px)': {
-        maxWidth: '300px'
+        maxWidth: '300px',
+        margin: '120px auto'
       }
     });
+
 
     return (
       <div>
         <ContentContainer
-          margin={'120px auto'}
           justifyContent={'flex-start'}
           maxWidth={mobileBelow578px}
         >

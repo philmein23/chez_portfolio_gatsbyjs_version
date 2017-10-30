@@ -10,7 +10,8 @@
     "gatsby-plugin-glamor": "^1.6.8",
     "gatsby-plugin-react-helmet": "^1.0.5",
     "glamor": "^2.20.40",
-    "isomorphic-unfetch": "^2.0.0"
+    "isomorphic-unfetch": "^2.0.0",
+    "react-headroom": "^2.2.2"
   },
   "keywords": [
     "gatsby"
@@ -25,6 +26,8 @@
   },
   "devDependencies": {
     "cloudinary-react": "^1.0.4",
+    "eslint": "^4.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
     "gatsby-plugin-sharp": "^1.6.10",
     "gatsby-source-filesystem": "^1.5.5",
     "gatsby-transformer-sharp": "^1.6.12",
